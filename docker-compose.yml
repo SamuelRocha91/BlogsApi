@@ -5,10 +5,7 @@ services:
   node:
     # Faz o build do Dockerfile da pasta atual e utiliza o resultado desse build
     # como a imagem do container
-    build: .
-    # Usuário linux padrão do container, não é recomendado usar root
-    # https://github.com/nodejs/docker-node/blob/main/docs/BestPractices.md#non-root-user
-    user: node
+    image: node:16
     # Nome do container para facilitar execução
     container_name: blogs_api
     # Mesmo que `docker run -t`
@@ -25,8 +22,7 @@ services:
     volumes:
       # Monta o diretório atual, com todos os dados do projeto, 
       # dentro do diretório /app
-      - ./src/:/app/src
-      - ./__tests__/coverage/:/app/__tests__/coverage
+      - ./:/app
     # Lista de serviços do qual este serviço depende
     depends_on:
       # Precisa do banco funcionando antes de subir o node
