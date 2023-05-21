@@ -1,5 +1,6 @@
 const express = require('express');
 const User = require('./controllers/user.controller');
+const validateNewUser = require('./middlewares/validateNewUser');
 
 // ...
 
@@ -14,6 +15,7 @@ app.use(express.json());
 
 app.post('/login', User.findUser);
 
+app.post('/user', validateNewUser, User.createUser);
 // ...
 
 // É importante exportar a constante `app`,
