@@ -25,15 +25,15 @@ const PostCategorieSchema = (sequelize, DataTypes) => {
     },
   );
 
-  PostCategorieTable.associate = ({Categorie, BlogPost}) => {
-    Categorie.belongsToMany(BlogPost, {
+  PostCategorieTable.associate = ({Category, BlogPost}) => {
+    Category.belongsToMany(BlogPost, {
       as: 'modules',
       through: PostCategorieTable,
       foreignKey: 'idCourse',
       otherKey: 'idModule',
     });
 
-    BlogPost.belongsToMany(Categorie, {
+    BlogPost.belongsToMany(Category, {
       as: 'courses',
       through: PostCategorieTable,
       foreignKey: 'idModule',
