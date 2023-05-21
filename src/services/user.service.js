@@ -12,6 +12,8 @@ const getUserByEmail = async (email, password) => User.findOne({
     },
 });
 
+const getUserById = async (id) => User.findByPk(id, { attributes: { exclude: ['password'] } });
+
 const updateUser = async (id, { displayName, email, password, image }) => {
     const [qtdUpdated] = await User.update(
         { displayName, email, password, image },
@@ -32,4 +34,5 @@ module.exports = {
     updateUser,
     removeUser,
     getUserByEmail,
+    getUserById,
 };

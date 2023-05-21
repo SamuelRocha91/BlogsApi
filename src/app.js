@@ -19,6 +19,8 @@ app.post('/login', User.findUser);
 app.post('/user', validateNewUser, User.createUser);
 
 app.get('/user', validateJWT, User.getUser);
+
+app.get('/user/:id', validateJWT, User.getUserById);
 // ...
 
 // É importante exportar a constante `app`,
