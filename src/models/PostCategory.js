@@ -5,7 +5,7 @@
  */
 const PostCategorieSchema = (sequelize, DataTypes) => {
   const PostCategorieTable = sequelize.define(
-    'post_categorie',
+    'PostCategory',
     {
       postId: {
         allowNull: false,
