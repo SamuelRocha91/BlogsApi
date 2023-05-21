@@ -5,6 +5,13 @@ User.create({ displayName, email, password, image });
 
 const getUser = async () => User.findAll();
 
+const getUserByEmail = async (email, password) => User.findOne({
+    where: {
+       email,
+       password,
+    },
+});
+
 const updateUser = async (id, { displayName, email, password, image }) => {
     const [qtdUpdated] = await User.update(
         { displayName, email, password, image },
@@ -24,4 +31,5 @@ module.exports = {
     getUser,
     updateUser,
     removeUser,
+    getUserByEmail,
 };

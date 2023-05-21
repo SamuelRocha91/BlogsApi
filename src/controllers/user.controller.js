@@ -1,9 +1,29 @@
 const userService = require('../services/user.service');
+const { createToken } = require('../auth/authfunctions');
 
 const createUser = async (req, res) => {
     const newUser = await userService.createUser(req.body);
 
     return res.status(201).json(newUser);
+};
+
+const findUser = async (req, res) => {
+    const { email, password } = req.body;
+    if (!email || !password) {
+        return res.status(400).json({
+            message: 'Some required fields are missing',
+          });
+    }
+    const user = await userService.getUserByEmail(email, password);
+    console.log(user);
+    if (!user) {
+        return res.status(400).json({
+            message: 'Invalid fields',
+          });
+    }
+    const { password: _password, ...userWithoutPassword } = user.dataValues;
+    const token = createToken(userWithoutPassword);
+    res.status(200).json({ token });
 };
 
 const getUser = async (req, res) => {
@@ -38,4 +58,5 @@ module.exports = {
     getUser,
     updateUser,
     removeUser,
+    findUser,
 };
