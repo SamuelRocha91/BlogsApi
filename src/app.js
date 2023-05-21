@@ -1,6 +1,7 @@
 const express = require('express');
 const User = require('./controllers/user.controller');
 const validateNewUser = require('./middlewares/validateNewUser');
+const validateJWT = require('./middlewares/validateJWT');
 
 // ...
 
@@ -16,6 +17,8 @@ app.use(express.json());
 app.post('/login', User.findUser);
 
 app.post('/user', validateNewUser, User.createUser);
+
+app.get('/user', validateJWT, User.getUser);
 // ...
 
 // É importante exportar a constante `app`,

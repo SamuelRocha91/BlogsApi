@@ -28,7 +28,6 @@ const findUser = async (req, res) => {
           });
     }
     const user = await userService.getUserByEmail(email, password);
-    console.log(user);
     if (!user) {
         return res.status(400).json({
             message: 'Invalid fields',
@@ -42,7 +41,7 @@ const findUser = async (req, res) => {
 const getUser = async (req, res) => {
     const allUser = await userService.getUser();
 
-    return res.status(201).json(allUser);
+    return res.status(200).json(allUser);
 };
 
 const updateUser = async (req, res) => {
