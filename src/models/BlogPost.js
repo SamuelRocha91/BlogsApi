@@ -13,11 +13,11 @@ const BlogSchema = (sequelize, DataTypes) => {
     title: DataTypes.STRING,
     content: DataTypes.STRING,
     userId: DataTypes.INTEGER,
-    updated: DataTypes.DATE,
     published: DataTypes.DATE,
+    updated: DataTypes.DATE,
   },
   {
-    timestamps: true,
+    timestamps: false,
     tableName: 'blog_posts',
     underscored: true,
   },
