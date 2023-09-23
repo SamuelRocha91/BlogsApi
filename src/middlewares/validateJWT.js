@@ -1,4 +1,5 @@
 const { verifyToken } = require('../auth/authfunctions');
+import { JwtPayload } from 'jsonwebtoken';
 
 const validateJwt = async (req, res, next) => {
   try {
