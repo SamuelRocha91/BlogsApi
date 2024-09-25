@@ -5,11 +5,8 @@ const validateJWT = require('./middlewares/validateJWT');
 const Category = require('./controllers/category.controller');
 const BlogPost = require('./controllers/BlogPost.controller');
 
-// ...
-
 const app = express();
 
-// não remova ou mova esse endpoint
 app.get('/', (_request, response) => {
   response.send();
 });
@@ -29,8 +26,5 @@ app.post('/categories', validateJWT, Category.createCategory);
 app.get('/categories', validateJWT, Category.findCategories);
 
 app.post('/post', validateJWT, BlogPost.createBlogPost);
-// ...
 
-// É importante exportar a constante `app`,
-// para que possa ser utilizada pelo arquivo `src/server.js`
 module.exports = app;

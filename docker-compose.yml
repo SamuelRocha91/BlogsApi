@@ -67,9 +67,3 @@ networks:
   blogs_api_net:
     # Define o `driver` como `bridge`, que é o driver padrão do docker
     driver: bridge
-
-# As chaves `tty`, `stdin_open` e `command` fazem com que o container fique
-# rodando em segundo plano, bem como tornam possível o uso do comando
-# `docker attach`, já deixando o terminal atual acoplado ao container, direto
-# no bash. Apesar disso, utilizar o attach mais de uma vez irá replicar o
-# terminal, portanto é melhor utilizar o comando `docker exec`.
