@@ -50,7 +50,7 @@
 
   1. Клонируйте репозиторий:
      ```bash
-     git clone https://github.com/seu-usuario/blogs-api.git
+     git clone git@github.com:SamuelRocha91/BlogsApi.git
      cd blogs-api
      ```
 
